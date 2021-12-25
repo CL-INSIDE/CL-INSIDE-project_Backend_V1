@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.payload;
+package com.example.sns.domain.post.payload.request;
 
 import com.example.sns.domain.post.entity.Category;
 import lombok.AllArgsConstructor;
