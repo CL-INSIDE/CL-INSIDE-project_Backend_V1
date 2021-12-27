@@ -1,4 +1,4 @@
-package com.example.sns.domain.hate.api;
+package com.example.sns.domain.sympathy.api;
 
 import com.example.sns.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HateController {
     private final PostService postService;
 
-    @PostMapping("/{post-id}")
+    @PostMapping("/hate/{post-id}")
     public void addHate(@PathVariable(name = "post-id") Integer id){
         postService.addHate(id);
     }
 
-    @DeleteMapping("/{post-id}")
+    @DeleteMapping("/hate/{post-id}")
     public void removeHate(@PathVariable(name = "post-id") Integer id){
         postService.removeHate(id);
     }

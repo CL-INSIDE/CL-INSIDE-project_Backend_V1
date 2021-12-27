@@ -1,4 +1,4 @@
-package com.example.sns.domain.like.entity;
+package com.example.sns.domain.sympathy.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
