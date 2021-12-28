@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.service;
+package com.example.sns.domain.emotion.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.emotion.domain.Hate;
