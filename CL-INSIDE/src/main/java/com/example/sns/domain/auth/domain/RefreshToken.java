@@ -1,4 +1,4 @@
-package com.example.sns.domain.auth.domain.refreshToken;
+package com.example.sns.domain.auth.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

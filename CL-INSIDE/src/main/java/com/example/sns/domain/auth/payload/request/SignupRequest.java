@@ -8,11 +8,11 @@ import javax.validation.constraints.Size;
 
 @Getter
 @NoArgsConstructor
-public class RegisterRequest {
+public class SignupRequest {
 
     private String name;
 
-    private String id;
+    private String email;
 
     private String password;
 }

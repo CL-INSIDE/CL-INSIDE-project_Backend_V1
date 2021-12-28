@@ -1,4 +1,4 @@
-package com.example.sns.domain.auth.domain.user;
+package com.example.sns.domain.auth.domain.types;
 
 public enum Role {
     ROLE_USER,

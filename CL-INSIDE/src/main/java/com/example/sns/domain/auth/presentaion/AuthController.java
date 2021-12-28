@@ -1,9 +1,9 @@
-package com.example.sns.domain.auth.api;
+package com.example.sns.domain.auth.presentaion;
 
 import com.example.sns.domain.auth.payload.request.LoginRequest;
-import com.example.sns.domain.auth.payload.request.RegisterRequest;
+import com.example.sns.domain.auth.payload.request.SignupRequest;
 import com.example.sns.domain.auth.payload.response.TokenResponse;
-import com.example.sns.domain.auth.service.AuthServiceImpl;
+import com.example.sns.domain.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +13,11 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthServiceImpl authService;
+    private final AuthService authService;
 
-    @PostMapping("/register")
-    public void register(@RequestBody @Valid RegisterRequest request){
-        authService.register(request);
+    @PostMapping("/signup")
+    public void signup(@RequestBody @Valid SignupRequest request){
+        authService.signup(request);
     }
 
     @PostMapping("/login")

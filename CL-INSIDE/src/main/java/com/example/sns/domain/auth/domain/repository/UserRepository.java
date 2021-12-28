@@ -1,4 +1,4 @@
-package com.example.sns.domain.auth.domain;
+package com.example.sns.domain.auth.domain.repository;
 
 import com.example.sns.domain.auth.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

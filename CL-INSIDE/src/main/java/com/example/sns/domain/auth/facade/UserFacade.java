@@ -1,6 +1,6 @@
 package com.example.sns.domain.auth.facade;
 
-import com.example.sns.domain.auth.entity.user.User;
+import com.example.sns.domain.auth.domain.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -20,6 +20,6 @@ public class UserFacade {
             return null;
         }
 
-        return getUser().getUid();
+        return getUser().getId();
     }
 }

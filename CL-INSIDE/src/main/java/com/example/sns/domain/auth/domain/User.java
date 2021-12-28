@@ -1,7 +1,6 @@
-package com.example.sns.domain.auth.domain.user;
+package com.example.sns.domain.auth.domain;
 
 import com.example.sns.domain.auth.domain.types.Role;
-import com.example.sns.domain.function.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Entity(name = "tbl_user")
 @Getter
@@ -40,9 +38,6 @@ public class User implements UserDetails {
 
     private Integer everyLikeCounts;
     private Integer everyHateCounts;
-
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

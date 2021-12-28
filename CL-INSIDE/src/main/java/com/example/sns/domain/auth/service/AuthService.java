@@ -1,12 +1,15 @@
 package com.example.sns.domain.auth.service;
 
+import com.example.sns.domain.auth.exception.RefreshTokenNotFoundException;
+import com.example.sns.domain.auth.exception.UserIdAlreadyExistException;
+import com.example.sns.domain.auth.exception.UserNotFoundException;
 import com.example.sns.domain.auth.domain.types.Role;
 import com.example.sns.domain.auth.domain.RefreshToken;
 import com.example.sns.domain.auth.domain.repository.RefreshTokenRepository;
 import com.example.sns.domain.auth.domain.User;
 import com.example.sns.domain.auth.domain.repository.UserRepository;
 import com.example.sns.domain.auth.payload.request.LoginRequest;
-import com.example.sns.domain.auth.payload.request.RegisterRequest;
+import com.example.sns.domain.auth.payload.request.SignupRequest;
 import com.example.sns.domain.auth.payload.response.TokenResponse;
 import com.example.sns.global.exception.*;
 import com.example.sns.global.security.jwt.JwtTokenProvider;
@@ -27,7 +30,7 @@ public class AuthService {
     @Value("${jwt.exp.refresh}")
     private Long REFRESH_TOKEN_VALID_TIME;
 
-    public void register(RegisterRequest request){
+    public void signup(SignupRequest request){
         if (userRepository.findByEmail(request.getEmail()).isPresent())
             throw UserIdAlreadyExistException.EXCEPTION;
 
@@ -42,7 +45,7 @@ public class AuthService {
     public TokenResponse login(LoginRequest request){
         User user =
         userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() ->UserNotFoundException.EXCEPTION);
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword()))
             throw InvalidPasswordException.EXCEPTION;
 
