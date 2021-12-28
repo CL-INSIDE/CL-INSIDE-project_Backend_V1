@@ -1,7 +1,6 @@
-package com.example.sns.domain.post.domain.service;
+package com.example.sns.domain.post.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
-import com.example.sns.domain.post.domain.Post;
 import com.example.sns.domain.post.domain.dto.response.PostResponse;
 import com.example.sns.domain.post.domain.dto.response.PostResultResponse;
 import com.example.sns.domain.post.domain.repository.PostRepository;

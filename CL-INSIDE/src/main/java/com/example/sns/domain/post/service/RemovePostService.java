@@ -1,6 +1,6 @@
-package com.example.sns.domain.post.domain.service;
+package com.example.sns.domain.post.service;
 
-import com.example.sns.domain.post.domain.exception.PostNotFoundException;
+import com.example.sns.domain.post.exception.PostNotFoundException;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

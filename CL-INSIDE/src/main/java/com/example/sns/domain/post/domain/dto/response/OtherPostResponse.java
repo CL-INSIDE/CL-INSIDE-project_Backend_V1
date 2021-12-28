@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @Builder
-public class GetPostResponse {
+public class OtherPostResponse {
 
     private String title;
     private String content;
