@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class GetEachPostService {
+public class EachPostService {
 
     private final PostRepository postRepository;
     private final LikeRepository likeRepository;
@@ -29,6 +29,7 @@ public class GetEachPostService {
                             .isHate(checkHate(id))
                             .getLikes(post.getLikeCounts())
                             .getHates(post.getHateCounts())
+                            .comments(post.getComments())
                             .isMine(checkMine(id))
                             .build();
                     return response;
@@ -37,15 +38,15 @@ public class GetEachPostService {
     }
 
     private boolean checkLike(Integer id){
-        return likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
+        return likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent();
     }
 
     private boolean checkHate(Integer id){
-        return hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
+        return hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent();
     }
 
     private boolean checkMine(Integer id){
-        Integer userId = UserFacade.getUserId();
+        Integer userId = UserFacade.getUser().getId();
 
         return postRepository.findById(id)
                 .filter(u -> userId != null)

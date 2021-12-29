@@ -36,10 +36,10 @@ public class OtherPostService {
     }
 
     private boolean checkLike(Integer id) {
-        return likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
+        return likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent();
     }
 
     private boolean checkHate(Integer id) {
-        return hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
+        return hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent();
     }
 }

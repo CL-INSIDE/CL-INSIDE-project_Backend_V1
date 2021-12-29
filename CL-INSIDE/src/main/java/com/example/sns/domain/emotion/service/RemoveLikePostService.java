@@ -4,7 +4,7 @@ import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.emotion.domain.repository.LikeRepository;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import com.example.sns.domain.post.exception.PostNotFoundException;
-import com.example.sns.global.exception.LikeNotFoundException;
+import com.example.sns.domain.emotion.exception.LikeNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class RemoveLikePostService {
 
     public void execute(Integer id){
         likeRepository.delete(
-                likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id)
+                likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id)
                         .orElseThrow(() -> LikeNotFoundException.EXCEPTION)
         );
         postRepository.findById(id)

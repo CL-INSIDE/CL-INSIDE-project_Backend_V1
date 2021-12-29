@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "tbl_hate")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor

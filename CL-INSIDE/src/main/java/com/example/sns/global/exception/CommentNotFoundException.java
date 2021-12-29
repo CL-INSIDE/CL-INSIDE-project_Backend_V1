@@ -3,11 +3,11 @@ package com.example.sns.global.exception;
 import com.example.sns.global.error.ErrorCode;
 import com.example.sns.global.error.exception.SnsException;
 
-public class InvalidPasswordException extends SnsException {
+public class CommentNotFoundException extends SnsException {
     public static SnsException EXCEPTION =
-            new InvalidPasswordException();
+            new CommentNotFoundException();
 
-    private InvalidPasswordException(){
-        super(ErrorCode.INVALID_PASSWORD);
+    private CommentNotFoundException(){
+        super(ErrorCode.COMMENT_NOT_FOUND);
     }
 }

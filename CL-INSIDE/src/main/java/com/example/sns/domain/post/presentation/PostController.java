@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.presentaion;
+package com.example.sns.domain.post.presentation;
 
 import com.example.sns.domain.post.domain.dto.request.PostRequest;
 import com.example.sns.domain.post.domain.dto.response.EachPostResponse;
@@ -22,7 +22,7 @@ public class PostController {
     private final RemovePostService removePostService;
     private final SearchPostService searchPostService;
     private final OtherPostService getPostService;
-    private final GetEachPostService getEachPostService;
+    private final EachPostService getEachPostService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/")

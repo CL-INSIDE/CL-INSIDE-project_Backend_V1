@@ -4,7 +4,7 @@ import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.emotion.domain.repository.HateRepository;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import com.example.sns.domain.post.exception.PostNotFoundException;
-import com.example.sns.global.exception.HateNotFoundException;
+import com.example.sns.domain.emotion.exception.HateNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class RemoveHatePostService {
 
     public void execute(Integer id){
         hateRepository.delete(
-                hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id)
+                hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id)
                         .orElseThrow(() -> HateNotFoundException.EXCEPTION)
         );
         postRepository.findById(id)

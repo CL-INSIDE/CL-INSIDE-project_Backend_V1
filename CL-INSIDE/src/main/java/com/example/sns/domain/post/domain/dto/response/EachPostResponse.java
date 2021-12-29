@@ -1,10 +1,12 @@
 package com.example.sns.domain.post.domain.dto.response;
 
+import com.example.sns.domain.comment.domain.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -23,4 +25,6 @@ public class EachPostResponse {
 
     private Integer getLikes;
     private Integer getHates;
+
+    private List<Comment> comments;
 }

@@ -7,16 +7,38 @@ server:
   port: 8080
 
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/auth?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
-    password: rhqmffls13!
-
   jpa:
     hibernate:
-      generate-ddl: true
       ddl-auto: update
+    generate-ddl: true
     show-sql: true
+
+  datasource:
+      url: ${DB_URL}
+      username: ${DB_USER}
+      password: ${DB_PASSWORD}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
+
+  servlet:
+      multipart:
+        max-file-size: 10MB
+        max-request-size: 10MB
+
+  profiles:
+      include:
+        - aws
+        - credentials
+
+jwt:
+  header: ${HEADER}
+  prefix: ${PREFIX}
+  secret: ${SECRET}
+  exp:
+    access: ${ACCESS}
+    refresh: ${REFRESH}
 
 

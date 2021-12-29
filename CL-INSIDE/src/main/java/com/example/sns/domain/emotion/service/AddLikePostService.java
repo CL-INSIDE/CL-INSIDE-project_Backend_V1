@@ -5,7 +5,7 @@ import com.example.sns.domain.emotion.domain.Like;
 import com.example.sns.domain.emotion.domain.repository.LikeRepository;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import com.example.sns.domain.post.exception.PostNotFoundException;
-import com.example.sns.global.exception.LikeAlreadyExistsException;
+import com.example.sns.domain.emotion.exception.LikeAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class AddLikePostService {
     private final PostRepository postRepository;
 
     public void execute(Integer id){
-        if (likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent())
+        if (likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent())
             throw LikeAlreadyExistsException.EXCEPTION;
 
         likeRepository.save(

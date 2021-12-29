@@ -30,6 +30,6 @@ public class SearchPostService {
                 })
                 .collect(Collectors.toList());
 
-        return new PostResultResponse(UserFacade.getUserId(), posts);
+        return new PostResultResponse(UserFacade.getUser().getId(), posts);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.domain.exception;
+package com.example.sns.domain.post.exception;
 
 import com.example.sns.global.error.ErrorCode;
 import com.example.sns.global.error.exception.SnsException;

@@ -1,5 +1,6 @@
 package com.example.sns.global.security.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -12,8 +13,11 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @EnableRedisRepositories
 public class RedisConfig {
 
-    private String REDIS_HOST = "localhost";
-    private int REDIS_PORT = 6379;
+    @Value("${spring.redis.host}")
+    private String REDIS_HOST;
+
+    @Value("${spring.redis.port}")
+    private int REDIS_PORT;
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory(){

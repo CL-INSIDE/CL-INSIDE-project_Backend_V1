@@ -1,19 +1,19 @@
 package com.example.sns.global.security.jwt;
 
-import com.example.sns.global.exception.ExpiredAccessTokenException;
-import com.example.sns.global.exception.ExpiredRefreshTokenException;
+import com.example.sns.domain.auth.exception.ExpiredAccessTokenException;
+import com.example.sns.domain.auth.exception.ExpiredRefreshTokenException;
 import com.example.sns.global.exception.IncorrectTokenException;
 import com.example.sns.global.exception.InvalidTokenException;
-import com.example.sns.global.security.auth.CustomUserDetailService;
+import com.example.sns.global.security.auth.UserDetailService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -23,26 +23,31 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class JwtTokenProvider {
 
-    private String SECRET_KEY = "U05TcHJvamVjdA==";
+    private String SECRET_KEY;
 
-    private String HEADER = "Authorization";
+    @Value("${jwt.header}")
+    private String HEADER;
 
-    private String PREFIX = "Bearer";
+    @Value("${jwt.prefix}")
+    private String PREFIX;
 
-    private long ACCESS_TOKEN_VALID_TIME = 5 * 60 * 1000L;
+    @Value("${jwt.exp.access}")
+    private Long ACCESS_TOKEN_VALID_TIME;
 
-    private long REFRESH_TOKEN_VALID_TIME = 60 * 60 * 24 * 100L;
+    @Value("${jwt.exp.refresh}")
+    private Long REFRESH_TOKEN_VALID_TIME;
 
-    private final CustomUserDetailService customUserDetailService;
+    private final UserDetailService customUserDetailService;
 
-    protected String setSecretKey(){
-        return Base64.getEncoder().encodeToString(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+    @Value("${jwt.secret}")
+    public void setSecretKey(String secretKey){
+        this.SECRET_KEY = Base64.getEncoder().encodeToString(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String createJwtAccessToken(String name){
+    public String createJwtAccessToken(String username){
         return Jwts.builder()
                 .setHeaderParam("type", "jwt")
-                .setSubject(name)
+                .setSubject(username)
                 .claim("type", "access")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALID_TIME))
@@ -59,6 +64,11 @@ public class JwtTokenProvider {
                 .setExpiration(new Date(System.currentTimeMillis() + REFRESH_TOKEN_VALID_TIME))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
+    }
+
+    public Authentication getAuthentication(String token){
+        UserDetails userDetails = customUserDetailService.loadUserByUsername(getUsername(token).getSubject());
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
     //study
@@ -86,18 +96,11 @@ public class JwtTokenProvider {
         }
     }
 
-    public Authentication getAuthentication(String token){
-        UserDetails userDetails = customUserDetailService.loadUserByUsername(getUsername(token).getSubject());
-        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-    }
 
     public boolean validateToken(String token) {
-        try {
-            String type = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().get("type", String.class);
-            return type.equals("access");
-        } catch (Exception e){
-            throw InvalidTokenException.EXCEPTION;
-        }
+        return !getUsername(token)
+                .getExpiration()
+                .before(new Date());
     }
 
     public boolean isRefreshToken(String refreshToken) {
@@ -116,6 +119,4 @@ public class JwtTokenProvider {
             throw InvalidTokenException.EXCEPTION;
         }
     }
-
-
 }

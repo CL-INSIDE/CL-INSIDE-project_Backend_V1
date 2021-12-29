@@ -5,7 +5,7 @@ import com.example.sns.domain.emotion.domain.Hate;
 import com.example.sns.domain.emotion.domain.repository.HateRepository;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import com.example.sns.domain.post.exception.PostNotFoundException;
-import com.example.sns.global.exception.HateAlreadyExistsException;
+import com.example.sns.domain.emotion.exception.HateAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class AddHatePostService {
     private final HateRepository hateRepository;
 
     public void execute(Integer id){
-        if (hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent())
+        if (hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent())
             throw HateAlreadyExistsException.EXCEPTION;
 
         hateRepository.save(

@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.domain.service;
+package com.example.sns.domain.post.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.post.domain.Post;
@@ -18,7 +18,8 @@ public class CreatePostService {
                         .title(request.getTitle())
                         .content(request.getContent())
                         .user(UserFacade.getUser())
-
+                        .likeCounts(0)
+                        .hateCounts(0)
                         .build());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.sns.domain.emotion.presentaion;
+package com.example.sns.domain.emotion.presentation;
 
 import com.example.sns.domain.emotion.service.AddLikePostService;
 import com.example.sns.domain.emotion.service.RemoveLikePostService;

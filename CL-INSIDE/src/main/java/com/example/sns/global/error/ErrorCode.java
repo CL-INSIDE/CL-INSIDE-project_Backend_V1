@@ -30,7 +30,11 @@ public enum ErrorCode {
     IMAGE_NOT_FOUND(404, "Image Not Found"),
 
     HATE_ALREADY_EXISTS(409, "Hate Already Exists"),
-    HATE_NOT_FOUND(404, "Hate Not Found");
+    HATE_NOT_FOUND(404, "Hate Not Found"),
+
+    INVALID_ROLE(401, "Invalid Role"),
+
+    COMMENT_NOT_FOUND(404, "Comment Not Found");
 
     private final int status;
     private final String message;
