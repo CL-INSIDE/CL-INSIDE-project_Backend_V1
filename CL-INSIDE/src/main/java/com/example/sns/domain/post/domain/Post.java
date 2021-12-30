@@ -4,7 +4,7 @@ import com.example.sns.domain.auth.domain.User;
 import com.example.sns.domain.comment.domain.Comment;
 import com.example.sns.domain.emotion.domain.Hate;
 import com.example.sns.domain.emotion.domain.Like;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.sns.global.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +20,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Post extends BaseTimeEntity{
+public class Post extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

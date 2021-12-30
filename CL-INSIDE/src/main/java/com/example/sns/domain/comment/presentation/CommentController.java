@@ -18,13 +18,13 @@ public class CommentController {
     private final GetPostCommentsService getPostCommentsService;
     private final AddCommentService addCommentService;
 
-    @PostMapping("/add/{post-id}")
+    @PostMapping("/comment/{post-id}")
     public void addComment(@PathVariable(name = "post-id") Integer postId, @RequestBody @Valid CommentRequest request){
-        addCommentService.execute(postId, request.getContent());
+        addCommentService.execute(postId, request);
     }
 
 
-    @GetMapping("/{post-id}")
+    @GetMapping("/comment/{post-id}")
     public List<CommentResponse> getPostComments(@PathVariable(name = "post-id") Integer id){
         return getPostCommentsService.execute(id);
     }

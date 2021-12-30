@@ -15,11 +15,13 @@ public class GetPostCommentsService {
     private final CommentRepository commentRepository;
 
     public List<CommentResponse> execute(Integer id){
-        return commentRepository.findById(id)
+        return commentRepository.findByPostId(id)
                 .stream()
                 .map(comment -> {
                     CommentResponse response = CommentResponse.builder()
                             .content(comment.getContent())
+                            .createdDate(comment.getCreatedDate())
+                            .updatedDate(comment.getUpdatedDate())
                             .build();
                     return response;
                 })

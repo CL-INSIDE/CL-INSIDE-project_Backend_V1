@@ -17,12 +17,13 @@ public class AddHatePostService {
     private final HateRepository hateRepository;
 
     public void execute(Integer id){
-        if (hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent())
+        if (hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent())
             throw HateAlreadyExistsException.EXCEPTION;
 
         hateRepository.save(
                 Hate.builder()
-                        .post(postRepository.findById(id).orElseThrow(() -> PostNotFoundException.EXCEPTION))
+                        .post(postRepository.findById(id)
+                                .orElseThrow(() -> PostNotFoundException.EXCEPTION))
                         .user(UserFacade.getUser())
                         .build());
 

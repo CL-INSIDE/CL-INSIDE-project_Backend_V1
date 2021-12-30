@@ -17,7 +17,7 @@ public class RemoveHatePostService {
 
     public void execute(Integer id){
         hateRepository.delete(
-                hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id)
+                hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id)
                         .orElseThrow(() -> HateNotFoundException.EXCEPTION)
         );
         postRepository.findById(id)

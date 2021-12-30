@@ -17,12 +17,13 @@ public class AddLikePostService {
     private final PostRepository postRepository;
 
     public void execute(Integer id){
-        if (likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent())
+        if (likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent())
             throw LikeAlreadyExistsException.EXCEPTION;
 
         likeRepository.save(
                 Like.builder()
-                        .post(postRepository.findById(id).orElseThrow(() -> PostNotFoundException.EXCEPTION))
+                        .post(postRepository.findById(id)
+                                .orElseThrow(() -> PostNotFoundException.EXCEPTION))
                         .user(UserFacade.getUser())
                         .build());
 

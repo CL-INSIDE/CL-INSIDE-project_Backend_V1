@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.domain;
+package com.example.sns.global.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

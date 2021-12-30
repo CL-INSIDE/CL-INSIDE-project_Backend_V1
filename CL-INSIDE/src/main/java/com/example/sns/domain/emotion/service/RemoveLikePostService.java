@@ -17,7 +17,7 @@ public class RemoveLikePostService {
 
     public void execute(Integer id){
         likeRepository.delete(
-                likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id)
+                likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id)
                         .orElseThrow(() -> LikeNotFoundException.EXCEPTION)
         );
         postRepository.findById(id)

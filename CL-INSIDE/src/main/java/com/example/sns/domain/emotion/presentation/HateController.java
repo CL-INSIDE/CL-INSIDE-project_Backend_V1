@@ -15,12 +15,12 @@ public class HateController {
     private final AddHatePostService addHatePostService;
     private final RemoveHatePostService removeHatePostService;
 
-    @PostMapping("/{post-id}")
+    @PostMapping("/hate/{post-id}")
     public void addHate(@PathVariable(name = "post-id") Integer id){
         addHatePostService.execute(id);
     }
 
-    @DeleteMapping("/{post-id}")
+    @DeleteMapping("/hate/{post-id}")
     public void removeHate(@PathVariable(name = "post-id") Integer id){
         removeHatePostService.execute(id);
     }
