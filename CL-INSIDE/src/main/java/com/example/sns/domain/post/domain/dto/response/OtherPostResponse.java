@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class OtherPostResponse {
 
     private String title;
+
     private String content;
 
     private Integer getLikes;
