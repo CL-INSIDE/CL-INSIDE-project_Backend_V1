@@ -1,6 +1,5 @@
 package com.example.sns.global.security.auth;
 
-import com.example.sns.domain.auth.domain.User;
 import com.example.sns.domain.auth.domain.repository.UserRepository;
 import com.example.sns.domain.auth.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +16,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
 
-        return new User(
-                userRepository.findByEmail(email)
-                        .orElseThrow(() -> UserNotFoundException.EXCEPTION)) {
-        };
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }

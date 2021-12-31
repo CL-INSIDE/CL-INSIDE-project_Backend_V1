@@ -4,7 +4,7 @@ import com.example.sns.domain.auth.exception.ExpiredAccessTokenException;
 import com.example.sns.domain.auth.exception.ExpiredRefreshTokenException;
 import com.example.sns.global.exception.IncorrectTokenException;
 import com.example.sns.global.exception.InvalidTokenException;
-import com.example.sns.global.security.auth.UserDetailService;
+import com.example.sns.global.security.auth.CustomUserDetailService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,7 +37,7 @@ public class JwtTokenProvider {
     @Value("${jwt.exp.refresh}")
     private Long REFRESH_TOKEN_VALID_TIME;
 
-    private final UserDetailService customUserDetailService;
+    private final CustomUserDetailService customUserDetailService;
 
     @Value("${jwt.secret}")
     public void setSecretKey(String secretKey){
