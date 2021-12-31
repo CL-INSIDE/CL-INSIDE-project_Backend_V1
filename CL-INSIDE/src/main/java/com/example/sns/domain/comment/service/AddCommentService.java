@@ -1,5 +1,8 @@
 package com.example.sns.domain.comment.service;
 
+import com.example.sns.domain.auth.domain.User;
+import com.example.sns.domain.auth.domain.repository.UserRepository;
+import com.example.sns.domain.auth.exception.UserNotFoundException;
 import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.comment.domain.Comment;
 import com.example.sns.domain.comment.domain.dto.request.CommentRequest;
@@ -22,9 +25,7 @@ public class AddCommentService {
                         .content(request.getContent())
                         .user(UserFacade.getUser())
                         .post(postRepository.findById(postId)
-                                .orElseThrow(() -> PostNotFoundException.EXCEPTION))
-                        .createdDate(request.getCreatedDate())
-                        .updatedDate(request.getUpdatedDate())
+                                 .orElseThrow(() -> PostNotFoundException.EXCEPTION))
                         .build());
     }
 }

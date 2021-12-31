@@ -1,5 +1,6 @@
 package com.example.sns.domain.comment.domain.dto.request;
 
+import com.example.sns.domain.auth.domain.User;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -14,8 +15,5 @@ public class CommentRequest {
     @Size(min = 1, max = 200, message = "댓글은 1자 이상 200자 이하입니다.")
     private String content;
 
-    private Integer postId;
-
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private User name;
 }

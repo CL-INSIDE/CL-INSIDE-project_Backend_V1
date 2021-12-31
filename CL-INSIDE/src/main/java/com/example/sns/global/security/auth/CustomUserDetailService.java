@@ -1,5 +1,6 @@
 package com.example.sns.global.security.auth;
 
+import com.example.sns.domain.auth.domain.User;
 import com.example.sns.domain.auth.domain.repository.UserRepository;
 import com.example.sns.domain.auth.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -10,14 +11,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailService implements UserDetailsService {
+public class CustomUserDetailService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException{
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
 
-        return new com.example.sns.global.security.auth.UserDetails(
-                userRepository.findByEmail(name)
-                        .orElseThrow(() -> UserNotFoundException.EXCEPTION));
+        return new User(
+                userRepository.findByEmail(email)
+                        .orElseThrow(() -> UserNotFoundException.EXCEPTION)) {
+        };
     }
 }

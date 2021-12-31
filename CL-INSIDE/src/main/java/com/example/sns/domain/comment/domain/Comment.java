@@ -16,6 +16,7 @@ public class Comment extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, length = 200)
     private String content;
 
     private LocalDateTime createdDate;
