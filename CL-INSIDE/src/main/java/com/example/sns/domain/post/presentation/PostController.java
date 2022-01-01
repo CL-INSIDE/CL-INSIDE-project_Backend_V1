@@ -21,7 +21,6 @@ public class PostController {
     private final ModifyPostService modifyPostService;
     private final RemovePostService removePostService;
     private final SearchPostService searchPostService;
-    private final OtherPostService getPostService;
     private final EachPostService getEachPostService;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -49,12 +48,6 @@ public class PostController {
     public EachPostResponse eachPost(@PathVariable(name = "post-id") Integer id){
         return getEachPostService.execute(id);
     }
-
-    @GetMapping("/other")
-    public List<OtherPostResponse> getOtherPosts(){
-        return getPostService.execute();
-    }
-
 
     /*생성
     * 수정

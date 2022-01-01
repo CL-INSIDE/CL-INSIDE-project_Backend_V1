@@ -25,13 +25,14 @@ public class Post extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, length = 30)
     private String title;
 
+    @Column(nullable = false, length = 500)
     private String content;
 
     private Integer likeCounts;
     private Integer hateCounts;
-    private Integer calculate;
 
     private boolean isLike;
     private boolean isHate;
@@ -55,7 +56,7 @@ public class Post extends BaseTimeEntity {
         return this;
     }
 
-    public Post addPostLikeCounts() {
+    public Post addLikeCounts() {
         this.likeCounts++;
         return this;
     }
@@ -65,7 +66,7 @@ public class Post extends BaseTimeEntity {
         return this;
     }
 
-    public Post addPostHateCounts(){
+    public Post addHateCounts(){
         this.hateCounts++;
         return this;
     }
@@ -74,5 +75,4 @@ public class Post extends BaseTimeEntity {
         this.hateCounts--;
         return this;
     }
-
 }

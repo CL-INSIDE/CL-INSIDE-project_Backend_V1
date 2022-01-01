@@ -30,7 +30,7 @@ public class AddHatePostService {
         postRepository.findById(id)
                 .map(post -> {
                     post.getUser().addHateCounts();
-                    post.addPostHateCounts();
+                    post.addHateCounts();
                     return post;
                 })
                 .orElseThrow(() -> PostNotFoundException.EXCEPTION);

@@ -38,15 +38,15 @@ public class EachPostService {
     }
 
     private boolean checkLike(Integer id){
-        return likeRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent();
+        return likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
     }
 
     private boolean checkHate(Integer id){
-        return hateRepository.findByUserIdAndPostId(UserFacade.getUser().getId(), id).isPresent();
+        return hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
     }
 
     private boolean checkMine(Integer id){
-        Integer userId = UserFacade.getUser().getId();
+        Integer userId = UserFacade.getUserId();
 
         return postRepository.findById(id)
                 .filter(u -> userId != null)

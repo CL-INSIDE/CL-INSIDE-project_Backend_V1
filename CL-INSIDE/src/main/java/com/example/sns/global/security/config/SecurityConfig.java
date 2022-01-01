@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers(HttpMethod.POST,"/signup").permitAll()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/comment/**").permitAll()
 
                 .and()
                 .apply(new FilterConfig(jwtTokenProvider));

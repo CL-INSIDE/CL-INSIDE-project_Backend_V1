@@ -9,7 +9,12 @@ import lombok.Getter;
 @Builder
 public class PostResponse {
 
+    private Integer id;
+
     private String title;
 
     private String content;
+
+    private boolean isLike;
+    private boolean isHate;
 }

@@ -30,7 +30,7 @@ public class AddLikePostService {
         postRepository.findById(id)
                 .map(post -> {
                     post.getUser().addLikeCounts();
-                    post.addPostLikeCounts();
+                    post.addLikeCounts();
                     return post;
                 })
                 .orElseThrow(() -> PostNotFoundException.EXCEPTION);

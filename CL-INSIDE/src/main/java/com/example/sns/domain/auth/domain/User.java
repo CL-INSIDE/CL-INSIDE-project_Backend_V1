@@ -2,6 +2,7 @@ package com.example.sns.domain.auth.domain;
 
 import com.example.sns.domain.auth.domain.types.Role;
 import com.example.sns.domain.comment.domain.Comment;
+import com.example.sns.domain.post.domain.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,6 +44,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Post> posts;
 
     public User addLikeCounts(){
         this.everyLikeCounts++;

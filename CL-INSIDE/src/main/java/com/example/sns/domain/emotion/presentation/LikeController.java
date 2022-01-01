@@ -12,7 +12,6 @@ public class LikeController {
     private final AddLikePostService addLikePostService;
     private final RemoveLikePostService removeLikePostService;
 
-
     @PostMapping("/like/{post-id}")
     public void addLike(@PathVariable(name = "post-id") Integer id){
         addLikePostService.execute(id);
