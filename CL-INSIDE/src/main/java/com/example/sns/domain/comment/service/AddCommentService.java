@@ -1,8 +1,5 @@
 package com.example.sns.domain.comment.service;
 
-import com.example.sns.domain.auth.domain.User;
-import com.example.sns.domain.auth.domain.repository.UserRepository;
-import com.example.sns.domain.auth.exception.UserNotFoundException;
 import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.comment.domain.Comment;
 import com.example.sns.domain.comment.domain.dto.request.CommentRequest;

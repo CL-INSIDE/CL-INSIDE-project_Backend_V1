@@ -1,11 +1,7 @@
 package com.example.sns.domain.comment.service;
 
-import com.example.sns.domain.auth.domain.User;
-import com.example.sns.domain.auth.domain.repository.UserRepository;
-import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.comment.domain.dto.response.CommentResponse;
 import com.example.sns.domain.comment.domain.repository.CommentRepository;
-import com.example.sns.domain.post.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +20,9 @@ public class GetPostCommentsService {
                 .map(comment -> {
                     CommentResponse response = CommentResponse.builder()
                             .id(comment.getId())
+                            .userInfo(CommentResponse.UserInfo.builder()
+                                    .name(comment.getUser().getName())
+                                    .build())
                             .content(comment.getContent())
                             .createdDate(comment.getCreatedDate())
                             .updatedDate(comment.getUpdatedDate())
