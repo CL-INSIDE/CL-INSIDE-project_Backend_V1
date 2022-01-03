@@ -22,7 +22,7 @@ public class AddCommentService {
                         .content(request.getContent())
                         .user(UserFacade.getUser())
                         .post(postRepository.findById(postId)
-                                 .orElseThrow(() -> PostNotFoundException.EXCEPTION))
+                                     .orElseThrow(() -> PostNotFoundException.EXCEPTION))
                         .build());
     }
 }

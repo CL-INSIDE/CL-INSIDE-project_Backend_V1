@@ -31,5 +31,5 @@ public class CommentResponse {
     @AllArgsConstructor
     public static class UserInfo{
         private String name;
-    };
+    }
 }

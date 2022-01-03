@@ -3,6 +3,8 @@ package com.example.sns.domain.comment.domain;
 import com.example.sns.domain.auth.domain.User;
 import com.example.sns.global.domain.BaseTimeEntity;
 import com.example.sns.domain.post.domain.Post;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity(name = "tbl_comment")
 @Getter
 @NoArgsConstructor
+@JsonIgnoreProperties({"post", "user"})
 public class Comment extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
