@@ -1,6 +1,7 @@
 package com.example.sns.domain.post.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
+import com.example.sns.domain.comment.domain.repository.CommentRepository;
 import com.example.sns.domain.emotion.domain.repository.HateRepository;
 import com.example.sns.domain.emotion.domain.repository.LikeRepository;
 import com.example.sns.domain.post.domain.dto.response.EachPostResponse;
@@ -16,6 +17,7 @@ public class EachPostService {
     private final PostRepository postRepository;
     private final LikeRepository likeRepository;
     private final HateRepository hateRepository;
+    private final CommentRepository commentRepository;
 
     public EachPostResponse execute(Integer id) {
         return postRepository.findById(id)
@@ -29,7 +31,7 @@ public class EachPostService {
                             .isHate(checkHate(id))
                             .getLikes(post.getLikeCounts())
                             .getHates(post.getHateCounts())
-                            .comments(post.getComments())
+                            .comments(commentRepository.findByPostId(id))
                             .isMine(checkMine(id))
                             .build();
                     return response;

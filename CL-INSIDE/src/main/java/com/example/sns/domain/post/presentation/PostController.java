@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/post")
 public class PostController {
 
     private final CreatePostService createService;
@@ -24,7 +25,7 @@ public class PostController {
     private final EachPostService getEachPostService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/")
+    @PostMapping("/create")
     public void createPost(@RequestBody @Valid PostRequest postRequest){
         createService.execute(postRequest);
     }

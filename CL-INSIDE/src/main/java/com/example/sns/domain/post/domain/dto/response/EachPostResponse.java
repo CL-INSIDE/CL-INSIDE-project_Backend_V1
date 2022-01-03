@@ -1,6 +1,7 @@
 package com.example.sns.domain.post.domain.dto.response;
 
 import com.example.sns.domain.comment.domain.Comment;
+import com.example.sns.domain.comment.domain.dto.response.CommentResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
