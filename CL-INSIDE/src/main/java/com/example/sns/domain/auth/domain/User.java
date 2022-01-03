@@ -2,7 +2,9 @@ package com.example.sns.domain.auth.domain;
 
 import com.example.sns.domain.auth.domain.types.Role;
 import com.example.sns.domain.comment.domain.Comment;
+import com.example.sns.domain.comment.domain.dto.response.CommentResponse;
 import com.example.sns.domain.post.domain.Post;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"password", "role"})
 public class User implements UserDetails {
 
     @Id
