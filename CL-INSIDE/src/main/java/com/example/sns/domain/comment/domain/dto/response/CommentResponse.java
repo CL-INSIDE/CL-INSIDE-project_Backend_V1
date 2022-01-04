@@ -8,6 +8,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -20,16 +21,11 @@ public class CommentResponse {
     @Size(min = 1, max = 200, message = "댓글은 1자 이상 200자 이하입니다.")
     private String content;
 
-    private UserInfo userInfo;
+
+    private List<User> userInfo;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
 
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    public static class UserInfo{
-        private String name;
-    }
 }

@@ -20,12 +20,14 @@ public class GetPostCommentsService {
                 .map(comment -> {
                     CommentResponse response = CommentResponse.builder()
                             .id(comment.getId())
-                            .userInfo(CommentResponse.UserInfo.builder()
-                                    .name(comment.getUser().getName())
-                                    .build())
                             .content(comment.getContent())
-                            .createdDate(comment.getCreatedDate())
-                            .updatedDate(comment.getUpdatedDate())
+                            .userInfo(comment.getUsers()
+                                    .stream()
+                                    .map(newUser -> newUser.userList(
+                                            newUser.getId(),
+                                            newUser.getName()
+                                    ))
+                                    .collect(Collectors.toList()))
                             .build();
                     return response;
                 })

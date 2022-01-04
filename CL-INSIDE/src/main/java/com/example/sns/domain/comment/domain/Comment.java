@@ -9,6 +9,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "tbl_comment")
 @Getter
@@ -32,6 +33,10 @@ public class Comment extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
+
+
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
+    private List<User> users;
 
     @Builder
     public Comment(String content, User user, LocalDateTime createdDate, LocalDateTime updatedDate, Post post) {
