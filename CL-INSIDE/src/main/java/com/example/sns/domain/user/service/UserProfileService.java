@@ -2,18 +2,13 @@ package com.example.sns.domain.user.service;
 
 import com.example.sns.domain.auth.domain.repository.UserRepository;
 import com.example.sns.domain.auth.exception.UserNotFoundException;
-import com.example.sns.domain.post.domain.Post;
-import com.example.sns.domain.post.domain.dto.response.PostResponse;
-import com.example.sns.domain.post.domain.repository.PostRepository;
-import com.example.sns.domain.user.domain.dto.UserProfileResponse;
+import com.example.sns.domain.user.domain.dto.response.UserProfileResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
-public class GetUserProfileService {
+public class UserProfileService {
 
     private final UserRepository userRepository;
 
@@ -23,17 +18,15 @@ public class GetUserProfileService {
                     UserProfileResponse response = UserProfileResponse.builder()
                             .userId(id)
                             .name(user.getName())
-                            .allPosts(user.getPosts()
-                                    .stream()
-                                    .map(newPost -> newPost.postList(
-                                            newPost.getId(),
-                                            newPost.getTitle()
-                                    ))
-                                    .collect(Collectors.toList())
-                            )
+                            .getLikeCount(user.getEveryLikeCounts())
+                            .postInfo(
+                                    UserProfileResponse.PostInfo.builder()
+                                            .postId(user.getPost().getId())
+                                            .title(user.getPost().getTitle())
+                                            .build())
                             .build();
                     return response;
                 })
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
-        }
+    }
 }
