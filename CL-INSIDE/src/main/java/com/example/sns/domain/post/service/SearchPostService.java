@@ -1,13 +1,14 @@
 package com.example.sns.domain.post.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
-import com.example.sns.domain.post.domain.dto.response.PostResponse;
-import com.example.sns.domain.post.domain.dto.response.PostResultResponse;
+import com.example.sns.domain.post.presentation.dto.response.PostResponse;
+import com.example.sns.domain.post.presentation.dto.response.PostResultResponse;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 

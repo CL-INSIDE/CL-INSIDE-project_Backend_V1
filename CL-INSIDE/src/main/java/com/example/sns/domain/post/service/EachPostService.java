@@ -4,11 +4,13 @@ import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.comment.domain.repository.CommentRepository;
 import com.example.sns.domain.emotion.domain.repository.HateRepository;
 import com.example.sns.domain.emotion.domain.repository.LikeRepository;
-import com.example.sns.domain.post.domain.dto.response.EachPostResponse;
+import com.example.sns.domain.post.presentation.dto.response.EachPostResponse;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import com.example.sns.domain.post.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor

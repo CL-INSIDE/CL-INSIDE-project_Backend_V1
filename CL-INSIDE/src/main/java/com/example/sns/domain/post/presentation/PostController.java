@@ -1,17 +1,14 @@
 package com.example.sns.domain.post.presentation;
 
-import com.example.sns.domain.post.domain.dto.request.PostRequest;
-import com.example.sns.domain.post.domain.dto.response.EachPostResponse;
-import com.example.sns.domain.post.domain.dto.response.OtherPostResponse;
-import com.example.sns.domain.post.domain.dto.response.PostResultResponse;
+import com.example.sns.domain.post.presentation.dto.request.PostRequest;
+import com.example.sns.domain.post.presentation.dto.response.EachPostResponse;
+import com.example.sns.domain.post.presentation.dto.response.PostResultResponse;
 import com.example.sns.domain.post.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,14 +22,18 @@ public class PostController {
     private final EachPostService getEachPostService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")
-    public void createPost(@RequestBody @Valid PostRequest postRequest){
-        createService.execute(postRequest);
+    @PostMapping("")
+    public void createPost(
+            @RequestPart(value = "file", required = false) MultipartFile image,
+            @RequestPart(value = "postReq") PostRequest postRequest){
+        createService.execute(postRequest, image);
     }
 
     @PatchMapping("/{post-id}")
-    public void modifyPost(@PathVariable(name = "post-id") Integer id, @RequestBody @Valid PostRequest postRequest){
-        modifyPostService.execute(id, postRequest);
+    public void modifyPost(@PathVariable(name = "post-id") Integer id,
+                           @RequestPart(value = "postReq") PostRequest postRequest,
+                           @RequestPart(value = "file", required = false) MultipartFile image){
+        modifyPostService.execute(id, postRequest, image);
     }
 
     @DeleteMapping("/{post-id}")
