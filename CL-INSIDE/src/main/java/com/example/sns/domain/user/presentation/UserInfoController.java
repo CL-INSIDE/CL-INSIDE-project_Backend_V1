@@ -1,6 +1,6 @@
 package com.example.sns.domain.user.presentation;
 
-import com.example.sns.domain.user.presentation.dto.response.UserProfileResponse;
+import com.example.sns.domain.user.presentation.dto.response.UserProfilePostResponse;
 import com.example.sns.domain.user.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ public class UserInfoController {
     private final UserProfileService userProfileService;
 
     @GetMapping("/info/{user-id}")
-    public UserProfileResponse getUserProfile(@PathVariable(name = "user-id") Integer id){
+    public UserProfilePostResponse getUserProfile(@PathVariable(name = "user-id") Integer id){
         return userProfileService.execute(id);
     }
 }
