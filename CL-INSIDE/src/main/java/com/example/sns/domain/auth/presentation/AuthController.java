@@ -1,8 +1,8 @@
 package com.example.sns.domain.auth.presentation;
 
-import com.example.sns.domain.auth.domain.dto.request.LoginRequest;
-import com.example.sns.domain.auth.domain.dto.request.SignupRequest;
-import com.example.sns.domain.auth.domain.dto.response.TokenResponse;
+import com.example.sns.domain.auth.presentation.dto.request.LoginRequest;
+import com.example.sns.domain.auth.presentation.dto.request.SignupRequest;
+import com.example.sns.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.sns.domain.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
