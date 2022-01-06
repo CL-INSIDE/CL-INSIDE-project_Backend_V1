@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UserFacade {
 
-
     public static User getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
