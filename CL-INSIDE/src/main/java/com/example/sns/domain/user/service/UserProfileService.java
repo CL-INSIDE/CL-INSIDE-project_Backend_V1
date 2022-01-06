@@ -2,7 +2,9 @@ package com.example.sns.domain.user.service;
 
 import com.example.sns.domain.auth.domain.repository.UserRepository;
 import com.example.sns.domain.auth.exception.UserNotFoundException;
-import com.example.sns.domain.user.domain.dto.response.UserProfileResponse;
+import com.example.sns.domain.post.domain.Post;
+import com.example.sns.domain.post.domain.repository.PostRepository;
+import com.example.sns.domain.user.presentation.dto.response.UserProfileResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserProfileService {
 
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
     public UserProfileResponse execute(Integer id){
         return userRepository.findById(id)
@@ -19,11 +22,7 @@ public class UserProfileService {
                             .userId(id)
                             .name(user.getName())
                             .getLikeCount(user.getEveryLikeCounts())
-                            .postInfo(
-                                    UserProfileResponse.PostInfo.builder()
-                                            .postId(user.getPost().getId())
-                                            .title(user.getPost().getTitle())
-                                            .build())
+                            .posts(postRepository.findPostByUserId())
                             .build();
                     return response;
                 })

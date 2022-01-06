@@ -1,6 +1,6 @@
 package com.example.sns.domain.user.presentation;
 
-import com.example.sns.domain.user.domain.dto.response.UserProfileResponse;
+import com.example.sns.domain.user.presentation.dto.response.UserProfileResponse;
 import com.example.sns.domain.user.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
