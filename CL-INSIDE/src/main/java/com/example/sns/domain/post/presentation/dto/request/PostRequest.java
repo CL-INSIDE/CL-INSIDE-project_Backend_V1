@@ -2,6 +2,7 @@ package com.example.sns.domain.post.domain.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,4 +23,7 @@ public class PostRequest {
     private boolean isLike;
 
     private boolean isHate;
+
+    @NotNull
+    private MultipartFile image;
 }

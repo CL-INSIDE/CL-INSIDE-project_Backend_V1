@@ -21,7 +21,7 @@ import java.util.UUID;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class S3Service {
+public class S3Util {
 
     private final AmazonS3Client amazonS3Client;
     private final S3Config s3Config;

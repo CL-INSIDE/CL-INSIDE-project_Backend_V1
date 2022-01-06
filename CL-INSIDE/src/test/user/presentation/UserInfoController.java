@@ -13,7 +13,7 @@ public class UserInfoController {
 
     private final UserProfileService userProfileService;
 
-    @GetMapping("/userinfo/{user-id}")
+    @GetMapping("/info/{user-id}")
     public UserProfileResponse getUserProfile(@PathVariable(name = "user-id") Integer id){
         return userProfileService.execute(id);
     }
