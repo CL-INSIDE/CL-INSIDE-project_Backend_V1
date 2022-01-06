@@ -1,8 +1,7 @@
 package com.example.sns.domain.comment.presentation;
 
-import com.example.sns.domain.comment.domain.Comment;
-import com.example.sns.domain.comment.domain.dto.request.CommentRequest;
-import com.example.sns.domain.comment.domain.dto.response.CommentResponse;
+import com.example.sns.domain.comment.presentation.dto.request.CommentRequest;
+import com.example.sns.domain.comment.presentation.dto.response.CommentResponse;
 import com.example.sns.domain.comment.service.AddCommentService;
 import com.example.sns.domain.comment.service.GetPostCommentsService;
 import lombok.RequiredArgsConstructor;

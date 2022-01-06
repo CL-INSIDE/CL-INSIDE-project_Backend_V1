@@ -1,4 +1,4 @@
-package com.example.sns.domain.comment.domain.dto.response;
+package com.example.sns.domain.comment.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,5 @@
-package com.example.sns.domain.comment.domain.dto.request;
+package com.example.sns.domain.comment.presentation.dto.request;
 
-import com.example.sns.domain.auth.domain.User;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
