@@ -21,8 +21,8 @@ public class PostController {
     private final SearchPostService searchPostService;
     private final EachPostService getEachPostService;
 
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("")
     public void createPost(
             @RequestPart(value = "file", required = false) MultipartFile image,
             @RequestPart(value = "postReq") PostRequest postRequest){
@@ -30,6 +30,7 @@ public class PostController {
     }
 
     @PatchMapping("/{post-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void modifyPost(@PathVariable(name = "post-id") Integer id,
                            @RequestPart(value = "postReq") PostRequest postRequest,
                            @RequestPart(value = "file", required = false) MultipartFile image){
@@ -37,6 +38,7 @@ public class PostController {
     }
 
     @DeleteMapping("/{post-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removePost(@PathVariable(name = "post-id") Integer id){
         removePostService.execute(id);
     }

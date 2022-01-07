@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.domain.dto.request;
+package com.example.sns.domain.post.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

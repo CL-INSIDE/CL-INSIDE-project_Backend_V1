@@ -1,4 +1,4 @@
-package com.example.sns.domain.post.domain.dto.response;
+package com.example.sns.domain.post.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,5 @@ import java.util.List;
 @AllArgsConstructor
 public class PostResultResponse {
 
-    private final Integer userId;
     private final List<PostResponse> posts;
 }
