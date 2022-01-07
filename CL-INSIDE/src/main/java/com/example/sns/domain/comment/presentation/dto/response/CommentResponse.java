@@ -12,7 +12,9 @@ import javax.validation.constraints.Size;
 @Builder
 public class CommentResponse {
 
-    private Integer id;
+    private Integer commentId;
+
+    private Integer userId;
 
     @NotBlank
     @Size(min = 1, max = 200, message = "댓글은 1자 이상 200자 이하입니다.")

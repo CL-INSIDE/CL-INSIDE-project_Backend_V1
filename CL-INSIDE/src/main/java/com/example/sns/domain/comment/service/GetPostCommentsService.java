@@ -19,7 +19,8 @@ public class GetPostCommentsService {
                 .stream()
                 .map(comment -> {
                     CommentResponse response = CommentResponse.builder()
-                            .id(comment.getId())
+                            .commentId(comment.getId())
+                            .userId(comment.getUser().getId())
                             .content(comment.getContent())
                             .build();
                     return response;

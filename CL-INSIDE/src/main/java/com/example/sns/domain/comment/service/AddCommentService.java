@@ -2,7 +2,7 @@ package com.example.sns.domain.comment.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.comment.domain.Comment;
-import com.example.sns.domain.comment.domain.dto.request.CommentRequest;
+import com.example.sns.domain.comment.presentation.dto.request.CommentRequest;
 import com.example.sns.domain.comment.domain.repository.CommentRepository;
 import com.example.sns.domain.post.domain.repository.PostRepository;
 import com.example.sns.domain.post.exception.PostNotFoundException;
