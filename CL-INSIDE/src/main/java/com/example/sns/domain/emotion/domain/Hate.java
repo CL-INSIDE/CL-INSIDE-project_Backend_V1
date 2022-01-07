@@ -2,6 +2,7 @@ package com.example.sns.domain.emotion.domain;
 
 import com.example.sns.domain.auth.domain.User;
 import com.example.sns.domain.post.domain.Post;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

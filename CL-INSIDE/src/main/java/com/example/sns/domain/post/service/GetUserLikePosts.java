@@ -2,7 +2,7 @@ package com.example.sns.domain.post.service;
 
 import com.example.sns.domain.auth.facade.UserFacade;
 import com.example.sns.domain.emotion.domain.repository.LikeRepository;
-import com.example.sns.domain.post.domain.dto.response.PostResponse;
+import com.example.sns.domain.post.presentation.dto.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
