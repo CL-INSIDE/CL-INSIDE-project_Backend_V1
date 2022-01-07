@@ -50,6 +50,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Post> posts;
 
+    //유저정보 여러게 가져오기 오류 고치기~!
+
     //------------------------------------------------------------------------------------------------------------------
     public User addLikeCounts(){
         this.everyLikeCounts++;

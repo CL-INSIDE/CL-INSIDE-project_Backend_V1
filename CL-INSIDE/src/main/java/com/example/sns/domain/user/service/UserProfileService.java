@@ -1,6 +1,7 @@
 package com.example.sns.domain.user.service;
 
 import com.example.sns.domain.auth.domain.repository.UserRepository;
+import com.example.sns.domain.auth.exception.UserNotFoundException;
 import com.example.sns.domain.image.domain.Image;
 import com.example.sns.domain.image.domain.repository.ImageRepository;
 import com.example.sns.domain.post.domain.repository.PostRepository;
@@ -23,24 +24,23 @@ public class UserProfileService {
     private final ImageRepository imageRepository;
 
     public UserProfilePostResponse execute(Integer id){
-
-        List<UserInfoResponse> userInfo = userRepository.findById(id)
-                .stream().map(user -> {
-                    UserInfoResponse userI = UserInfoResponse.builder()
+         UserInfoResponse userInfo = userRepository.findById(id)
+                .map(user -> {
+                    UserInfoResponse userInfoResponse = UserInfoResponse.builder()
                             .userId(id)
                             .name(user.getName())
                             .build();
-                    return userI;
+                    return userInfoResponse;
                 })
-                .collect(Collectors.toList());
+                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-        List<UserProfileResponse> posts = postRepository.findPostByUserId(id)
+         List<UserProfileResponse> posts = postRepository.findPostByUserId(id)
                 .stream()
                 .map(post -> {
                     UserProfileResponse response = UserProfileResponse.builder()
                             .postId(post.getId())
                             .title(post.getTitle())
-                            .image(imageRepository.findByUserId(id)
+                            .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl).orElseThrow(() -> ImageNotFoundException.EXCEPTION))
                             .build();
                     return response;
