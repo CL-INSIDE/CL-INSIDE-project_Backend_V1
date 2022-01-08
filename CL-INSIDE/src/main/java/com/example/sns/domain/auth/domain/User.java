@@ -35,7 +35,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 100)
     private String password;
 
-    @Column(nullable = false, length = 12)
+    @Column(nullable = false, unique = true, length = 12)
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -50,7 +50,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Post> posts;
 
-    //유저정보 여러게 가져오기 오류 고치기~!
+    //유저정보 여러게 가져오기 오류 고치기~! - 해결
+    
+    //사진 유저 권한 오류 고치기 - 보류
+    //좋아요 싫어요 기능 만들기
 
     //------------------------------------------------------------------------------------------------------------------
     public User addLikeCounts(){
