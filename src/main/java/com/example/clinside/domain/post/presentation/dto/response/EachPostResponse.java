@@ -28,4 +28,6 @@ public class EachPostResponse {
     private Integer getHates;
 
     private List<Comment> comments;
+
+    private String image;
 }
