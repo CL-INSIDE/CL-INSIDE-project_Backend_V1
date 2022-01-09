@@ -4,6 +4,7 @@ import com.example.clinside.domain.post.presentation.dto.request.PostRequest;
 import com.example.clinside.domain.post.presentation.dto.response.EachPostResponse;
 import com.example.clinside.domain.post.presentation.dto.response.PostResultResponse;
 import com.example.clinside.domain.post.service.*;
+import com.example.clinside.domain.user.service.GetUserLikePosts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,8 @@ public class PostController {
     public EachPostResponse eachPost(@PathVariable(name = "post-id") Integer id) {
         return getEachPostService.execute(id);
     }
+
+
 
     /*생성
      * 수정
