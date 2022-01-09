@@ -2,7 +2,9 @@ package com.example.clinside.domain.post.presentation;
 
 import com.example.clinside.domain.post.presentation.dto.request.PostRequest;
 import com.example.clinside.domain.post.presentation.dto.response.EachPostResponse;
+import com.example.clinside.domain.post.presentation.dto.response.ManyLikePostsResponse;
 import com.example.clinside.domain.post.presentation.dto.response.PostResultResponse;
+import com.example.clinside.domain.post.presentation.dto.response.RandomPostsResponse;
 import com.example.clinside.domain.post.service.*;
 import com.example.clinside.domain.user.service.GetUserLikePosts;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +25,8 @@ public class PostController {
     private final RemovePostService removePostService;
     private final SearchPostService searchPostService;
     private final EachPostService getEachPostService;
+    private final ManyLikePostsService manyLikePostsService;
+    private final RandomPostsSrevice randomPostsSrevice;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -52,6 +58,16 @@ public class PostController {
     @GetMapping("/{post-id}")
     public EachPostResponse eachPost(@PathVariable(name = "post-id") Integer id) {
         return getEachPostService.execute(id);
+    }
+
+    @GetMapping("/many/like")
+    public List<ManyLikePostsResponse> manyLikePosts(){
+        return manyLikePostsService.execute();
+    }
+
+    @GetMapping("/random")
+    public List<RandomPostsResponse> randomPosts(){
+        return randomPostsSrevice.execute();
     }
 
 
