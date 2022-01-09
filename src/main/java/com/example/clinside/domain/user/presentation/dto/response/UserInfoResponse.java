@@ -10,6 +10,7 @@ import lombok.Getter;
 public class UserInfoResponse {
 
     private Integer userId;
+    private String email;
     private String name;
 
 }

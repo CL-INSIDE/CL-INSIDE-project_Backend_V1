@@ -28,6 +28,7 @@ public class UserProfileService {
                 .map(user -> {
                     UserInfoResponse userInfoResponse = UserInfoResponse.builder()
                             .userId(id)
+                            .email(user.getEmail())
                             .name(user.getName())
                             .build();
                     return userInfoResponse;
