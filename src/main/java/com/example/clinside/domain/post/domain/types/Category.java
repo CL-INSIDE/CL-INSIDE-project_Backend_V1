@@ -1,5 +1,11 @@
-package com.example.clinside.domain.auth.domain.types;
+package com.example.clinside.domain.post.domain.types;
 
 public enum Category {
-    GAME
+
+    GAME,
+    SPORT,
+    IT,
+    TRIP,
+    BOARDCAST,
+    HOBBY
 }
