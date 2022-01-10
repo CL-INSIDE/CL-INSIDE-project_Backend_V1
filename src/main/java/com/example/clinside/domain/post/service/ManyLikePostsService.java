@@ -27,6 +27,7 @@ public class ManyLikePostsService {
                             .userId(post.getUser().getId())
                             .title(post.getTitle())
                             .likeCounts(post.getLikeCounts())
+                            .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl)
                                     .orElseThrow(() -> ImageNotFoundException.EXCEPTION))

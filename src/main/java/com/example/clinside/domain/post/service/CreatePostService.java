@@ -21,6 +21,7 @@ public class CreatePostService {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .user(UserFacade.getUser())
+                .category(request.getCategory())
                 .likeCounts(0)
                 .hateCounts(0)
                 .build());

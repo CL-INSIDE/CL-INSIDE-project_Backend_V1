@@ -1,6 +1,7 @@
 package com.example.clinside.domain.post.presentation.dto.response;
 
 import com.example.clinside.domain.comment.domain.Comment;
+import com.example.clinside.domain.post.domain.types.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +27,8 @@ public class EachPostResponse {
 
     private Integer getLikes;
     private Integer getHates;
+
+    private Category category;
 
     private List<Comment> comments;
 

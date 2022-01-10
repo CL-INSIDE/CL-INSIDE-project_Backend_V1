@@ -25,7 +25,8 @@ public class ModifyPostService {
         Post post = postRepository.findById(id)
                 .map(newPost -> newPost.updatePost(
                         request.getTitle(),
-                        request.getContent()
+                        request.getContent(),
+                        request.getCategory()
                 ))
                 .orElseThrow(() -> PostNotFoundException.EXCEPTION);
 
