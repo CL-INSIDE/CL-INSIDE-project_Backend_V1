@@ -30,6 +30,7 @@ public class SearchPostService {
                             .userId(post.getUser().getId())
                             .title(post.getTitle())
                             .content(post.getContent())
+                            .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl)
                                     .orElseThrow(() -> ImageNotFoundException.EXCEPTION))

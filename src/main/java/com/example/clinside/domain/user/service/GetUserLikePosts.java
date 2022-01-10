@@ -29,6 +29,7 @@ public class GetUserLikePosts {
                             .title(like.getPost().getTitle())
                             .content(like.getPost().getContent())
                             .isLike(true)
+                            .category(like.getPost().getCategory())
                             .image(imageRepository.findByPostId(like.getPost().getId())
                                     .map(Image::getImageUrl)
                                     .orElseThrow(() -> ImageNotFoundException.EXCEPTION))

@@ -26,6 +26,7 @@ public class RandomPostsSrevice {
                             .postId(post.getId())
                             .userId(post.getUser().getId())
                             .title(post.getTitle())
+                            .category(post.getCategory())
                             .likeCounts(post.getLikeCounts())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl)

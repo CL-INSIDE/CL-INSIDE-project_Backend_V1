@@ -35,6 +35,7 @@ public class EachPostService {
                             .isHate(checkHate(id))
                             .getLikes(post.getLikeCounts())
                             .getHates(post.getHateCounts())
+                            .category(post.getCategory())
                             .comments(commentRepository.findByPostId(id))
                             .isMine(checkMine(id))
                             .image(imageRepository.findByPostId(post.getId())

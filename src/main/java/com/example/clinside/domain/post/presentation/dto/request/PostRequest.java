@@ -1,5 +1,6 @@
 package com.example.clinside.domain.post.presentation.dto.request;
 
+import com.example.clinside.domain.post.domain.types.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,8 @@ public class PostRequest {
     private boolean isLike;
 
     private boolean isHate;
+
+    private Category category;
 
     @NotNull
     private MultipartFile image;

@@ -1,5 +1,6 @@
 package com.example.clinside.domain.post.presentation.dto.response;
 
+import com.example.clinside.domain.post.domain.types.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +21,8 @@ public class PostResponse {
 
     private boolean isLike;
     private boolean isHate;
+
+    private Category category;
 
     private String image;
 }

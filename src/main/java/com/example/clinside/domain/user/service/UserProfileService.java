@@ -41,6 +41,7 @@ public class UserProfileService {
                     UserProfileResponse response = UserProfileResponse.builder()
                             .postId(post.getId())
                             .title(post.getTitle())
+                            .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl).orElseThrow(() -> ImageNotFoundException.EXCEPTION))
                             .build();
