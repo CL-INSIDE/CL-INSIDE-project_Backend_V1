@@ -5,6 +5,7 @@ import com.example.clinside.domain.comment.domain.Comment;
 import com.example.clinside.domain.emotion.domain.Hate;
 import com.example.clinside.domain.emotion.domain.Like;
 import com.example.clinside.domain.image.domain.Image;
+import com.example.clinside.domain.post.domain.types.Category;
 import com.example.clinside.global.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +37,9 @@ public class Post extends BaseTimeEntity {
     private Integer likeCounts;
     private Integer hateCounts;
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
     private boolean isLike;
     private boolean isHate;
 
@@ -58,9 +62,10 @@ public class Post extends BaseTimeEntity {
     private Image image;
 
     //-------------------------------------------------------------------------------------------------------------------
-    public Post updatePost(String title, String content) {
+    public Post updatePost(String title, String content, Category category) {
         this.title = title;
         this.content = content;
+        this.category = category;
         return this;
     }
 
