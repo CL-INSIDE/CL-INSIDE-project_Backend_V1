@@ -1,5 +1,6 @@
 package com.example.clinside.domain.user.presentation.dto.response;
 
+import com.example.clinside.domain.post.domain.types.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,4 +17,6 @@ public class UserProfileResponse {
     private String title;
 
     private String image;
+
+    private Category category;
 }
