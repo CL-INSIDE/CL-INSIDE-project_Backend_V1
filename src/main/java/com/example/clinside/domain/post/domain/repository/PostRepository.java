@@ -1,6 +1,7 @@
 package com.example.clinside.domain.post.domain.repository;
 
 import com.example.clinside.domain.post.domain.Post;
+import com.example.clinside.domain.post.domain.types.Category;
 import com.example.clinside.domain.post.presentation.dto.response.ManyLikePostsResponse;
 import com.example.clinside.domain.post.service.ManyLikePostsService;
 import org.springframework.data.domain.Pageable;
@@ -19,4 +20,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     @Query(value = "select * from tbl_post order by rand() limit 3", nativeQuery = true)
     List<Post> findRandomPosts();
+
+    List<Post> findByCategoryContaining(Category category, Pageable pageable);
 }
