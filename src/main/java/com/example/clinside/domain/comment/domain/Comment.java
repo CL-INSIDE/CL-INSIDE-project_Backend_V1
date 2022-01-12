@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity(name = "tbl_comment")
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment extends BaseTimeEntity {
 
     @Id

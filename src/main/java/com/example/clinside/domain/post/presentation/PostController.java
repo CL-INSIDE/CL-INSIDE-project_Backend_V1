@@ -19,60 +19,53 @@ import java.util.List;
 @RequestMapping("/post")
 public class PostController {
 
-    private final CreatePostService createService;
-    private final ModifyPostService modifyPostService;
-    private final RemovePostService removePostService;
-    private final SearchPostService searchPostService;
-    private final EachPostService getEachPostService;
-    private final ManyLikePostsService manyLikePostsService;
-    private final RandomPostsSrevice randomPostsSrevice;
-    private final CategoryListService categoryListService;
+    private final PostService postService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createPost(
-            @RequestPart(value = "file", required = false) MultipartFile image,
+            @RequestPart(value = "file", required = false) MultipartFile file,
             @RequestPart(value = "postReq") PostRequest postRequest) {
-        createService.execute(postRequest, image);
+        postService.createPost(postRequest, file);
     }
 
     @PatchMapping("/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void modifyPost(@PathVariable(name = "post-id") Integer id,
                            @RequestPart(value = "postReq") PostRequest postRequest,
-                           @RequestPart(value = "file", required = false) MultipartFile image) {
-        modifyPostService.execute(id, postRequest, image);
+                           @RequestPart(value = "file", required = false) MultipartFile file) {
+        postService.modifyPost(postRequest, file, id);
     }
 
     @DeleteMapping("/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removePost(@PathVariable(name = "post-id") Integer id) {
-        removePostService.execute(id);
-    }
-
-    @GetMapping("/search")
-    public PostResultResponse searchPost(@RequestParam(name = "keyword") String keyword, Pageable pageable) {
-        return searchPostService.execute(keyword, pageable);
+        postService.removePost(id);
     }
 
     @GetMapping("/{post-id}")
     public EachPostResponse eachPost(@PathVariable(name = "post-id") Integer id) {
-        return getEachPostService.execute(id);
+        return postService.eachPost(id);
+    }
+
+    @GetMapping("/search")
+    public PostResultResponse searchPost(@RequestParam(name = "keyword") String keyword, Pageable pageable) {
+        return postService.searchPost(keyword, pageable);
     }
 
     @GetMapping("/many/like")
     public List<ManyLikePostsResponse> manyLikePosts(){
-        return manyLikePostsService.execute();
+        return postService.manyLikePosts();
     }
 
     @GetMapping("/random")
     public List<RandomPostsResponse> randomPosts(){
-        return randomPostsSrevice.execute();
+        return postService.randomPosts();
     }
 
     @GetMapping("/category")
     public List<PostResponse> categoryListPost(@RequestParam(name = "category-name") Category category, Pageable pageable) {
-        return categoryListService.execute(category, pageable);
+        return postService.categoryListPost(category, pageable);
     }
 
 
