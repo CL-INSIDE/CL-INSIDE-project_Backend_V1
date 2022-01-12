@@ -2,8 +2,6 @@ package com.example.clinside.domain.post.domain.repository;
 
 import com.example.clinside.domain.post.domain.Post;
 import com.example.clinside.domain.post.domain.types.Category;
-import com.example.clinside.domain.post.presentation.dto.response.ManyLikePostsResponse;
-import com.example.clinside.domain.post.service.ManyLikePostsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
