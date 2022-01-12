@@ -7,21 +7,18 @@ import com.example.clinside.domain.emotion.domain.Like;
 import com.example.clinside.domain.image.domain.Image;
 import com.example.clinside.domain.post.domain.types.Category;
 import com.example.clinside.global.domain.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "tbl_post")
 @Getter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity(name = "tbl_post")
 public class Post extends BaseTimeEntity {
 
     @Id
@@ -43,11 +40,11 @@ public class Post extends BaseTimeEntity {
     private boolean isLike;
     private boolean isHate;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-    private Set<Like> likes = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.REMOVE)
+    private final Set<Like> likes = new HashSet<>();
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-    private Set<Hate> hates = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.REMOVE)
+    private final Set<Hate> hates = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -61,7 +58,6 @@ public class Post extends BaseTimeEntity {
             cascade = CascadeType.REMOVE)
     private Image image;
 
-    //-------------------------------------------------------------------------------------------------------------------
     public Post updatePost(String title, String content, Category category) {
         this.title = title;
         this.content = content;
@@ -79,7 +75,7 @@ public class Post extends BaseTimeEntity {
         return this;
     }
 
-    public Post addHateCounts() {
+    public Post addPostHateCounts() {
         this.hateCounts++;
         return this;
     }

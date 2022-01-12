@@ -2,24 +2,20 @@ package com.example.clinside.domain.auth.domain;
 
 import com.example.clinside.domain.auth.domain.types.Role;
 import com.example.clinside.domain.comment.domain.Comment;
+import com.example.clinside.domain.emotion.domain.Like;
 import com.example.clinside.domain.post.domain.Post;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Entity(name = "tbl_user")
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
 @JsonIgnoreProperties({"email", "password", "role"})
@@ -44,6 +40,9 @@ public class User implements UserDetails {
     private Integer everyLikeCounts;
     private Integer everyHateCounts;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private final Set<Like> likes = new HashSet<>();
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
@@ -55,7 +54,6 @@ public class User implements UserDetails {
     //사진 유저 권한 오류 고치기 - 보류
     //좋아요 싫어요 기능 만들기
 
-    //------------------------------------------------------------------------------------------------------------------
     public User addLikeCounts() {
         this.everyLikeCounts++;
         return this;
@@ -71,7 +69,7 @@ public class User implements UserDetails {
         return this;
     }
 
-    public User removeHateCounts() {
+    public User removeHateCounts(){
         this.everyHateCounts--;
         return this;
     }
