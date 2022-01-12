@@ -1,27 +1,27 @@
 package com.example.clinside.domain.emotion.presentation;
 
-import com.example.clinside.domain.emotion.service.AddHatePostService;
-import com.example.clinside.domain.emotion.service.RemoveHatePostService;
+import com.example.clinside.domain.auth.facade.UserFacade;
+import com.example.clinside.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/hate")
 public class HateController {
 
-    private final AddHatePostService addHatePostService;
-    private final RemoveHatePostService removeHatePostService;
+    private final PostService postService;
 
-    @PostMapping("/hate/{post-id}")
+    @PostMapping("/{post-id}")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addHate(@PathVariable(name = "post-id") Integer id) {
-        addHatePostService.execute(id);
+        postService.addHate(id);
     }
 
-    @DeleteMapping("/hate/{post-id}")
+    @DeleteMapping("/{post-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeHate(@PathVariable(name = "post-id") Integer id) {
-        removeHatePostService.execute(id);
+        postService.removeHate(id);
     }
 }
