@@ -39,6 +39,8 @@ public class AuthService {
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ROLE_USER)
+                .everyLikeCounts(0)
+                .everyHateCounts(0)
                 .build());
     }
 
