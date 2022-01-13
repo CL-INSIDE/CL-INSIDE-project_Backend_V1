@@ -4,7 +4,7 @@ import com.example.clinside.domain.auth.facade.UserFacade;
 import com.example.clinside.domain.image.domain.Image;
 import com.example.clinside.domain.image.domain.repository.ImageRepository;
 import com.example.clinside.domain.post.domain.Post;
-import com.example.clinside.global.exception.ImageNotFoundException;
+import com.example.clinside.domain.image.exception.ImageNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

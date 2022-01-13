@@ -5,7 +5,7 @@ import com.example.clinside.domain.emotion.domain.repository.LikeRepository;
 import com.example.clinside.domain.image.domain.Image;
 import com.example.clinside.domain.image.domain.repository.ImageRepository;
 import com.example.clinside.domain.post.presentation.dto.response.PostResponse;
-import com.example.clinside.global.exception.ImageNotFoundException;
+import com.example.clinside.domain.image.exception.ImageNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
