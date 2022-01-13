@@ -21,22 +21,22 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     List<Post> findByCategoryContaining(Category category, Pageable pageable);
 
-    @Query(value = "select * from tbl_post order by category = 'SPORT'", nativeQuery = true)
+    @Query(value = "select * from tbl_post where category like 'SPORT'", nativeQuery = true)
     List<Post> findPostByCategorySport();
 
-    @Query(value = "select * from tbl_post order by category = 'GAME'", nativeQuery = true)
+    @Query(value = "select * from tbl_post where category like 'GAME'", nativeQuery = true)
     List<Post> findPostByCategoryGame();
 
-    @Query(value = "select * from tbl_post order by category = 'TRIP'", nativeQuery = true)
+    @Query(value = "select * from tbl_post where category like 'TRIP'", nativeQuery = true)
     List<Post> findPostByCategoryTrip();
 
-    @Query(value = "select * from tbl_post order by category = 'IT'", nativeQuery = true)
+    @Query(value = "select * from tbl_post where category like 'IT'", nativeQuery = true)
     List<Post> findPostByCategoryIt();
 
-    @Query(value = "select * from tbl_post order by category = 'BOARDCAST'", nativeQuery = true)
+    @Query(value = "select * from tbl_post where category like 'BOARDCAST'", nativeQuery = true)
     List<Post> findPostByCategoryBoardCast();
 
-    @Query(value = "select * from tbl_post order by category = 'HOBBY'", nativeQuery = true)
+    @Query(value = "select * from tbl_post where category like 'HOBBY'", nativeQuery = true)
     List<Post> findPostByCategoryHobby();
 
 }
