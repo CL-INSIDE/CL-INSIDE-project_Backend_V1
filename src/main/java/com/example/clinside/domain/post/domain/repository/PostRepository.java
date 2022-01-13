@@ -20,4 +20,23 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> findRandomPosts();
 
     List<Post> findByCategoryContaining(Category category, Pageable pageable);
+
+    @Query(value = "select * from tbl_post order by category = 'SPORT'", nativeQuery = true)
+    List<Post> findPostByCategorySport();
+
+    @Query(value = "select * from tbl_post order by category = 'GAME'", nativeQuery = true)
+    List<Post> findPostByCategoryGame();
+
+    @Query(value = "select * from tbl_post order by category = 'TRIP'", nativeQuery = true)
+    List<Post> findPostByCategoryTrip();
+
+    @Query(value = "select * from tbl_post order by category = 'IT'", nativeQuery = true)
+    List<Post> findPostByCategoryIt();
+
+    @Query(value = "select * from tbl_post order by category = 'BOARDCAST'", nativeQuery = true)
+    List<Post> findPostByCategoryBoardCast();
+
+    @Query(value = "select * from tbl_post order by category = 'HOBBY'", nativeQuery = true)
+    List<Post> findPostByCategoryHobby();
+
 }
