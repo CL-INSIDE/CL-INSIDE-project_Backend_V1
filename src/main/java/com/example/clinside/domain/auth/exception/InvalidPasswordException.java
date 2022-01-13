@@ -1,4 +1,4 @@
-package com.example.clinside.global.exception;
+package com.example.clinside.domain.auth.exception;
 
 import com.example.clinside.global.error.ErrorCode;
 import com.example.clinside.global.error.exception.SnsException;

@@ -8,7 +8,7 @@ import com.example.clinside.domain.post.domain.repository.PostRepository;
 import com.example.clinside.domain.user.presentation.dto.response.UserInfoResponse;
 import com.example.clinside.domain.user.presentation.dto.response.UserProfileResponse;
 import com.example.clinside.domain.user.presentation.dto.response.UserProfilePostResponse;
-import com.example.clinside.global.exception.ImageNotFoundException;
+import com.example.clinside.domain.image.exception.ImageNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,8 +2,8 @@ package com.example.clinside.global.security.jwt;
 
 import com.example.clinside.domain.auth.exception.ExpiredAccessTokenException;
 import com.example.clinside.domain.auth.exception.ExpiredRefreshTokenException;
-import com.example.clinside.global.exception.IncorrectTokenException;
-import com.example.clinside.global.exception.InvalidTokenException;
+import com.example.clinside.domain.auth.exception.IncorrectTokenException;
+import com.example.clinside.domain.auth.exception.InvalidTokenException;
 import com.example.clinside.global.security.auth.CustomUserDetailService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
