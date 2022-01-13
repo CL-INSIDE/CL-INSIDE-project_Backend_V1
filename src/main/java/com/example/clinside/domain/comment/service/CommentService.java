@@ -38,6 +38,7 @@ public class CommentService {
                             .commentId(comment.getId())
                             .userId(comment.getUser().getId())
                             .content(comment.getContent())
+                            .createDate(comment.getCreatedDate())
                             .build();
                     return response;
                 })

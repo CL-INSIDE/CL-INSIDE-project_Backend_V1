@@ -6,6 +6,7 @@ import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -15,6 +16,8 @@ public class CommentResponse {
     private Integer commentId;
 
     private Integer userId;
+
+    private LocalDateTime createDate;
 
     @NotBlank
     @Size(min = 1, max = 200, message = "댓글은 1자 이상 200자 이하입니다.")
