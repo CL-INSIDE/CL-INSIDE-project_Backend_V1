@@ -68,6 +68,40 @@ public class PostController {
         return postService.categoryListPost(category, pageable);
     }
 
+    @GetMapping("/category/sport")
+    public List<PostResponse> categorySportPosts(){
+        return postService.categorySportPosts();
+    }
+
+    @GetMapping("/category/trip")
+    public List<PostResponse> categoryTripPosts(){
+        return postService.categoryTripPosts();
+    }
+
+    @GetMapping("/category/it")
+    public List<PostResponse> categoryItPosts(){
+        return postService.categoryItPosts();
+    }
+
+    @GetMapping("/category/board-cast")
+    public List<PostResponse> categoryBoardCastPosts(){
+        return postService.categoryBoardCastPosts();
+    }
+
+    @GetMapping("/category/hobby")
+    public List<PostResponse> categoryHobbyPosts(){
+        return postService.categoryHobbyPosts();
+    }
+
+    @GetMapping("/category/game")
+    public List<PostResponse> categoryGamePosts(){
+        return postService.categoryGamePosts();
+    }
+
+
+
+
+
 
 
     /*생성
