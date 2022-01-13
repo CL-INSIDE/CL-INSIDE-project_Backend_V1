@@ -19,7 +19,7 @@ import com.example.clinside.domain.post.exception.PostNotFoundException;
 import com.example.clinside.domain.post.presentation.dto.request.PostRequest;
 import com.example.clinside.domain.post.presentation.dto.response.*;
 import com.example.clinside.global.error.exception.SnsException;
-import com.example.clinside.global.exception.ImageNotFoundException;
+import com.example.clinside.domain.image.exception.ImageNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -88,10 +88,11 @@ public class PostService {
                         .createdDate(post.getCreatedDate())
                         .updatedDate(post.getUpdatedDate())
                         .isLike(checkLike(id))
+                        .isHate(checkHate(id))
                         .getLikes(post.getLikeCounts())
                         .category(post.getCategory())
                         .comments(commentRepository.findByPostId(id))
-                        .isMine(checkMine(id))
+                        //.isMine(checkMine(id))
                         .image(imageRepository.findByPostId(post.getId())
                                 .map(Image::getImageUrl)
                                 .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
@@ -254,6 +255,10 @@ public class PostService {
         return likeRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
     }
 
+    private boolean checkHate(Integer id) {
+        return hateRepository.findByUserIdAndPostId(UserFacade.getUserId(), id).isPresent();
+    }
+/*
     private boolean checkMine(Integer id) {
         Integer userId = UserFacade.getUserId();
 
@@ -261,5 +266,113 @@ public class PostService {
                 .filter(u -> userId != null)
                 .map(post -> post.getUser().getId().equals(userId))
                 .isPresent();
+    }*/
+
+    public List<PostResponse> categorySportPosts(){
+        return postRepository.findPostByCategorySport()
+                .stream()
+                .map(post -> {
+                    PostResponse response = PostResponse.builder()
+                            .title(post.getTitle())
+                            .userId(post.getUser().getId())
+                            .id(post.getId())
+                            .category(post.getCategory())
+                            .image(imageRepository.findByPostId(post.getId())
+                                    .map(Image::getImageUrl)
+                                    .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
+                            .build();
+                    return response;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PostResponse> categoryItPosts(){
+        return postRepository.findPostByCategoryIt()
+                .stream()
+                .map(post -> {
+                    PostResponse response = PostResponse.builder()
+                            .title(post.getTitle())
+                            .userId(post.getUser().getId())
+                            .id(post.getId())
+                            .category(post.getCategory())
+                            .image(imageRepository.findByPostId(post.getId())
+                                    .map(Image::getImageUrl)
+                                    .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
+                            .build();
+                    return response;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PostResponse> categoryTripPosts(){
+        return postRepository.findPostByCategoryTrip()
+                .stream()
+                .map(post -> {
+                    PostResponse response = PostResponse.builder()
+                            .title(post.getTitle())
+                            .userId(post.getUser().getId())
+                            .id(post.getId())
+                            .category(post.getCategory())
+                            .image(imageRepository.findByPostId(post.getId())
+                                    .map(Image::getImageUrl)
+                                    .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
+                            .build();
+                    return response;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PostResponse> categoryBoardCastPosts(){
+        return postRepository.findPostByCategoryBoardCast()
+                .stream()
+                .map(post -> {
+                    PostResponse response = PostResponse.builder()
+                            .title(post.getTitle())
+                            .userId(post.getUser().getId())
+                            .id(post.getId())
+                            .category(post.getCategory())
+                            .image(imageRepository.findByPostId(post.getId())
+                                    .map(Image::getImageUrl)
+                                    .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
+                            .build();
+                    return response;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PostResponse> categoryHobbyPosts(){
+        return postRepository.findPostByCategoryHobby()
+                .stream()
+                .map(post -> {
+                    PostResponse response = PostResponse.builder()
+                            .title(post.getTitle())
+                            .userId(post.getUser().getId())
+                            .id(post.getId())
+                            .category(post.getCategory())
+                            .image(imageRepository.findByPostId(post.getId())
+                                    .map(Image::getImageUrl)
+                                    .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
+                            .build();
+                    return response;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PostResponse> categoryGamePosts(){
+        return postRepository.findPostByCategoryGame()
+                .stream()
+                .map(post -> {
+                    PostResponse response = PostResponse.builder()
+                            .title(post.getTitle())
+                            .userId(post.getUser().getId())
+                            .id(post.getId())
+                            .category(post.getCategory())
+                            .image(imageRepository.findByPostId(post.getId())
+                                    .map(Image::getImageUrl)
+                                    .orElseThrow(() -> ImageNotFoundException.EXCEPTION))
+                            .build();
+                    return response;
+                })
+                .collect(Collectors.toList());
     }
 }
