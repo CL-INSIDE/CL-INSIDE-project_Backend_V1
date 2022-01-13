@@ -69,32 +69,32 @@ public class PostController {
     }
 
     @GetMapping("/category/sport")
-    public List<PostResponse> categorySportPosts(){
+    public List<CategoryPostResponse> categorySportPosts(){
         return postService.categorySportPosts();
     }
 
     @GetMapping("/category/trip")
-    public List<PostResponse> categoryTripPosts(){
+    public List<CategoryPostResponse> categoryTripPosts(){
         return postService.categoryTripPosts();
     }
 
     @GetMapping("/category/it")
-    public List<PostResponse> categoryItPosts(){
+    public List<CategoryPostResponse> categoryItPosts(){
         return postService.categoryItPosts();
     }
 
     @GetMapping("/category/board-cast")
-    public List<PostResponse> categoryBoardCastPosts(){
+    public List<CategoryPostResponse> categoryBoardCastPosts(){
         return postService.categoryBoardCastPosts();
     }
 
     @GetMapping("/category/hobby")
-    public List<PostResponse> categoryHobbyPosts(){
+    public List<CategoryPostResponse> categoryHobbyPosts(){
         return postService.categoryHobbyPosts();
     }
 
     @GetMapping("/category/game")
-    public List<PostResponse> categoryGamePosts(){
+    public List<CategoryPostResponse> categoryGamePosts(){
         return postService.categoryGamePosts();
     }
 
