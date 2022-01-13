@@ -268,14 +268,17 @@ public class PostService {
                 .isPresent();
     }*/
 
-    public List<PostResponse> categorySportPosts(){
+    public List<CategoryPostResponse> categorySportPosts(){
         return postRepository.findPostByCategorySport()
                 .stream()
                 .map(post -> {
-                    PostResponse response = PostResponse.builder()
+                    CategoryPostResponse response = CategoryPostResponse.builder()
                             .title(post.getTitle())
                             .userId(post.getUser().getId())
                             .id(post.getId())
+                            .name(post.getUser().getName())
+                            .likeCounts(post.getLikeCounts())
+                            .hateCounts(post.getHateCounts())
                             .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl)
@@ -286,13 +289,16 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public List<PostResponse> categoryItPosts(){
+    public List<CategoryPostResponse> categoryItPosts(){
         return postRepository.findPostByCategoryIt()
                 .stream()
                 .map(post -> {
-                    PostResponse response = PostResponse.builder()
+                    CategoryPostResponse response = CategoryPostResponse.builder()
                             .title(post.getTitle())
                             .userId(post.getUser().getId())
+                            .name(post.getUser().getName())
+                            .likeCounts(post.getLikeCounts())
+                            .hateCounts(post.getHateCounts())
                             .id(post.getId())
                             .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
@@ -304,14 +310,17 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public List<PostResponse> categoryTripPosts(){
+    public List<CategoryPostResponse> categoryTripPosts(){
         return postRepository.findPostByCategoryTrip()
                 .stream()
                 .map(post -> {
-                    PostResponse response = PostResponse.builder()
+                    CategoryPostResponse response = CategoryPostResponse.builder()
                             .title(post.getTitle())
                             .userId(post.getUser().getId())
                             .id(post.getId())
+                            .name(post.getUser().getName())
+                            .likeCounts(post.getLikeCounts())
+                            .hateCounts(post.getHateCounts())
                             .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl)
@@ -322,13 +331,16 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public List<PostResponse> categoryBoardCastPosts(){
+    public List<CategoryPostResponse> categoryBoardCastPosts(){
         return postRepository.findPostByCategoryBoardCast()
                 .stream()
                 .map(post -> {
-                    PostResponse response = PostResponse.builder()
+                    CategoryPostResponse response = CategoryPostResponse.builder()
                             .title(post.getTitle())
                             .userId(post.getUser().getId())
+                            .name(post.getUser().getName())
+                            .likeCounts(post.getLikeCounts())
+                            .hateCounts(post.getHateCounts())
                             .id(post.getId())
                             .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
@@ -340,12 +352,15 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public List<PostResponse> categoryHobbyPosts(){
+    public List<CategoryPostResponse> categoryHobbyPosts(){
         return postRepository.findPostByCategoryHobby()
                 .stream()
                 .map(post -> {
-                    PostResponse response = PostResponse.builder()
+                    CategoryPostResponse response = CategoryPostResponse.builder()
                             .title(post.getTitle())
+                            .name(post.getUser().getName())
+                            .likeCounts(post.getLikeCounts())
+                            .hateCounts(post.getHateCounts())
                             .userId(post.getUser().getId())
                             .id(post.getId())
                             .category(post.getCategory())
@@ -358,14 +373,17 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public List<PostResponse> categoryGamePosts(){
+    public List<CategoryPostResponse> categoryGamePosts(){
         return postRepository.findPostByCategoryGame()
                 .stream()
                 .map(post -> {
-                    PostResponse response = PostResponse.builder()
+                    CategoryPostResponse response = CategoryPostResponse.builder()
                             .title(post.getTitle())
                             .userId(post.getUser().getId())
                             .id(post.getId())
+                            .name(post.getUser().getName())
+                            .likeCounts(post.getLikeCounts())
+                            .hateCounts(post.getHateCounts())
                             .category(post.getCategory())
                             .image(imageRepository.findByPostId(post.getId())
                                     .map(Image::getImageUrl)
