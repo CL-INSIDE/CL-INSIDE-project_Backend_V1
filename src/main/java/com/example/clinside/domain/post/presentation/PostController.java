@@ -63,11 +63,6 @@ public class PostController {
         return postService.randomPosts();
     }
 
-    @GetMapping("/category")
-    public List<PostResponse> categoryListPost(@RequestParam(name = "category-name") Category category, Pageable pageable) {
-        return postService.categoryListPost(category, pageable);
-    }
-
     @GetMapping("/category/sport")
     public List<CategoryPostResponse> categorySportPosts(){
         return postService.categorySportPosts();
