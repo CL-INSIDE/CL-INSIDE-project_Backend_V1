@@ -3,6 +3,7 @@ package com.example.clinside.domain.post.service;
 import com.example.clinside.domain.auth.domain.User;
 import com.example.clinside.domain.auth.facade.UserFacade;
 import com.example.clinside.domain.comment.domain.repository.CommentRepository;
+import com.example.clinside.domain.comment.presentation.dto.response.CommentResponse;
 import com.example.clinside.domain.emotion.domain.Hate;
 import com.example.clinside.domain.emotion.domain.Like;
 import com.example.clinside.domain.emotion.domain.repository.HateRepository;
@@ -91,7 +92,16 @@ public class PostService {
                         .isHate(checkHate(id))
                         .getLikes(post.getLikeCounts())
                         .category(post.getCategory())
-                        .comments(commentRepository.findByPostId(id))
+                        .comments(commentRepository.findByPostId(id)
+                                .stream()
+                                .map(comment -> {
+                                    CommentResponse commentResponse = CommentResponse.builder()
+                                            .commentId(comment.getId())
+                                            .userId(comment.getUser().getId())
+                                            .content(comment.getContent())
+                                            .build();
+                                    return commentResponse;
+                                }).collect(Collectors.toList()))
                         //.isMine(checkMine(id))
                         .image(imageRepository.findByPostId(post.getId())
                                 .map(Image::getImageUrl)
