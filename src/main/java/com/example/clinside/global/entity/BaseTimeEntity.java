@@ -1,4 +1,4 @@
-package com.example.clinside.global.domain;
+package com.example.clinside.global.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

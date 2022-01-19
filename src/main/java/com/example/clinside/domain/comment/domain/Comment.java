@@ -1,7 +1,7 @@
 package com.example.clinside.domain.comment.domain;
 
 import com.example.clinside.domain.auth.domain.User;
-import com.example.clinside.global.domain.BaseTimeEntity;
+import com.example.clinside.global.entity.BaseTimeEntity;
 import com.example.clinside.domain.post.domain.Post;
 import lombok.*;
 

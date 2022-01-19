@@ -21,9 +21,13 @@ public class CommentController {
         commentService.addComment(postId, request);
     }
 
-
     @GetMapping("/comment/{post-id}")
     public List<CommentResponse> getPostComments(@PathVariable(name = "post-id") Integer id) {
         return commentService.getPostComments(id);
+    }
+
+    @GetMapping("/comment/{comment-id}")
+    public CommentResponse getComment(@PathVariable(name = "comment-id") Integer id){
+        return commentService.getComment(id);
     }
 }

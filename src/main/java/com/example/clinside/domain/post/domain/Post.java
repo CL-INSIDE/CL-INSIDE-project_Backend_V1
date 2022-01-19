@@ -6,7 +6,7 @@ import com.example.clinside.domain.emotion.domain.Hate;
 import com.example.clinside.domain.emotion.domain.Like;
 import com.example.clinside.domain.image.domain.Image;
 import com.example.clinside.domain.post.domain.types.Category;
-import com.example.clinside.global.domain.BaseTimeEntity;
+import com.example.clinside.global.entity.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;

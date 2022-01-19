@@ -2,7 +2,7 @@ package com.example.clinside.domain.image.domain;
 
 import com.example.clinside.domain.auth.domain.User;
 import com.example.clinside.domain.post.domain.Post;
-import com.example.clinside.global.domain.BaseTimeEntity;
+import com.example.clinside.global.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

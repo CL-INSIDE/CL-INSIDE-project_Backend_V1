@@ -17,8 +17,6 @@ public class CommentResponse {
 
     private Integer userId;
 
-    private LocalDateTime createDate;
-
     @NotBlank
     @Size(min = 1, max = 200, message = "댓글은 1자 이상 200자 이하입니다.")
     private String content;
