@@ -26,7 +26,4 @@ public class PostRequest {
     private boolean isHate;
 
     private Category category;
-
-    @NotNull
-    private MultipartFile image;
 }

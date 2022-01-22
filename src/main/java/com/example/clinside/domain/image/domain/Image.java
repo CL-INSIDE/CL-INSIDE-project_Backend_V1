@@ -3,17 +3,14 @@ package com.example.clinside.domain.image.domain;
 import com.example.clinside.domain.auth.domain.User;
 import com.example.clinside.domain.post.domain.Post;
 import com.example.clinside.global.entity.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "tbl_image")
 public class Image extends BaseTimeEntity {
 
@@ -30,10 +27,4 @@ public class Image extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Image updateImage(String imagePath, String imageUrl) {
-        this.imagePath = imagePath;
-        this.imageUrl = imageUrl;
-        return this;
-    }
 }

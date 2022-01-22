@@ -13,6 +13,7 @@ import com.example.clinside.domain.emotion.exception.LikeNotFoundException;
 import com.example.clinside.domain.image.domain.Image;
 import com.example.clinside.domain.image.domain.repository.ImageRepository;
 import com.example.clinside.domain.image.service.ImageService;
+import com.example.clinside.domain.image.service.S3Util;
 import com.example.clinside.domain.post.domain.Post;
 import com.example.clinside.domain.post.domain.repository.PostRepository;
 import com.example.clinside.domain.post.domain.types.Category;
@@ -40,6 +41,7 @@ public class PostService {
     private final LikeRepository likeRepository;
     private final CommentRepository commentRepository;
     private final HateRepository hateRepository;
+    private final S3Util s3Util;
 
     @Transactional
     public void createPost(PostRequest request, MultipartFile file) {
@@ -52,7 +54,7 @@ public class PostService {
                 .hateCounts(0)
                 .build());
 
-        imageService.addImage(file, post);
+        imageService.addImage(post, file);
     }
 
     @Transactional
@@ -66,17 +68,22 @@ public class PostService {
                 .orElseThrow(() -> PostNotFoundException.EXCEPTION);
 
         if (file != null) {
-            imageService.modifyImage(file, post);
+            imageService.modifyImage(post, file);
         }
     }
 
     @Transactional
     public void removePost(Integer id) {
-        if (postRepository.findById(id).isEmpty())
-            throw PostNotFoundException.EXCEPTION;
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> PostNotFoundException.EXCEPTION);
 
-        imageService.removeImage(id);
-        postRepository.deleteById(id);
+        postRepository.delete(post);
+        imageService.removeImage(post);
+
+        s3Util.removeFile(imageRepository.findByPostId(id)
+                .map(image -> image.getImagePath())
+                .orElseThrow(() -> ImageNotFoundException.EXCEPTION));
+
     }
 
     @Transactional
