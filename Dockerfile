@@ -1,10 +1,5 @@
-FROM ubuntu:20.04
-RUN apt-get update
-RUN install openjdk:11
+FROM openjdk:11-jre-slim
 EXPOSE 8080
-
 ENV TZ=Asia/Seoul
-COPY ./src/main
-
-CMD build
+COPY ./build/libs/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
