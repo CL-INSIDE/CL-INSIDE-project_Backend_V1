@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  application:
+    image: dlwjddbs14/clinside
+    build: .
+    links:
+      - redis
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
